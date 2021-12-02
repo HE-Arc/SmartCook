@@ -23030,7 +23030,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      imgLogo: './resources/images/logo.PNG'
+      logo: './resources/images/logo.PNG'
     };
   }
 });
@@ -24584,7 +24584,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("nav", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: $data.imgLogo,
+    src: $data.logo,
     alt: "Smartcook",
     height: "200"
   }, null, 8

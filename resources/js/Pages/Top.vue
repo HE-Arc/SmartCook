@@ -3,7 +3,7 @@
         <div class="container">
 
             <div class="navbar-header">
-                <img :src="imgLogo" alt="Smartcook" height="200"/>
+                <img :src="logo" alt="Smartcook" height="200"/>
 
                 <a class="navbar-brand" href="#">Smartcook</a>
             </div>
@@ -52,7 +52,7 @@ export default {
 
   data() {
         return {
-            imgLogo: './resources/images/logo.PNG'
+            logo: './resources/images/logo.PNG'
         }
     }
 }
