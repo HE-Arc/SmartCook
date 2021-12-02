@@ -16,7 +16,10 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
+/*
+* Probablement à supprimer. Pas utilisé
+*/
+Route::get('/welcome', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -30,7 +33,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::resource('/home', HomeController::class);
-
+Route::resource('/', HomeController::class);
 
 require __DIR__.'/auth.php';
