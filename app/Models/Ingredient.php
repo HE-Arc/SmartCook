@@ -13,7 +13,6 @@ class Ingredient extends Model
         'name', 'category', 'measure'
     ];
 
-
     function recipe() {
         return $this -> belongsToMany(Recipe::class);
     }
