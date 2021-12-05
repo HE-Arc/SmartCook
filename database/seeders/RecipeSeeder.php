@@ -16,7 +16,9 @@ class RecipeSeeder extends Seeder
     public function run()
     {
         $recipes = [
-            ['name' => 'Crumble au pommes', 'ingredients' => 1, 'persons' => 4, 'description' => "Je suis un crumble au pommes, bonjour.", 'instruction' => 'peler des pommes bordel','cook_time' => "00:38:00", 'category' => 'dessert']
+            ['name' => 'Crumble au pommes', 'ingredients' => 1, 'persons' => 4, 'description' => "Je suis un crumble au pommes, bonjour.", 'instruction' => 'peler des pommes bordel','cook_time' => "00:38:00", 'category' => 'dessert'],
+            ['name' => 'Crumble au framboises', 'ingredients' => 1, 'persons' => 4, 'description' => "Je suis un crumble au pommes, bonjour.", 'instruction' => 'peler des pommes bordel','cook_time' => "00:38:00", 'category' => 'dessert'],
+            ['name' => 'Crumble au poires', 'ingredients' => 1, 'persons' => 4, 'description' => "Je suis un crumble au pommes, bonjour.", 'instruction' => 'peler des pommes bordel','cook_time' => "00:38:00", 'category' => 'dessert']
         ];
 
         foreach ($recipes as $recipe)
@@ -29,7 +31,8 @@ class RecipeSeeder extends Seeder
                 'instruction' => $recipe["instruction"],
                 'cook_time' => $recipe["cook_time"],
                 'category' => $recipe["category"]
-            ));
+                )
+            );
         }
     }
 }

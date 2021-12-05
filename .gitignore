@@ -1,3 +1,5 @@
+# Created by https://www.toptal.com/developers/gitignore/api/laravel,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=laravel,visualstudiocode
 
 ### Laravel ###
 /vendor/
@@ -39,3 +41,5 @@ Homestead.json
 # Ignore all local history of files
 .history
 .ionide
+
+# End of https://www.toptal.com/developers/gitignore/api/laravel,visualstudiocode
