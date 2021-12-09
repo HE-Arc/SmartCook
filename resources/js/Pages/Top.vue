@@ -3,7 +3,7 @@
         <div class="container">
 
             <div class="navbar-header">
-                <img :src="logo" alt="Smartcook" height="200"/>
+                <img :src="getImage()" alt="Smartcook" height="200"/>
 
                 <a class="navbar-brand" href="#">Smartcook</a>
             </div>
@@ -37,9 +37,6 @@
     </nav>
 </template>
 
-
-
-
 <script>
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import { Head } from '@inertiajs/inertia-vue3'
@@ -49,12 +46,11 @@ export default {
     BreezeAuthenticatedLayout,
     Head,
   },
-
-  data() {
-        return {
-            logo: './resources/images/logo.PNG'
-        }
-    }
+  methods: {
+      getImage() {
+        return 'assets/images/logo.PNG';
+      }
+  }
 }
 </script>
 

@@ -6,7 +6,7 @@
 
             <div class="page-content">
 
-                <Link href="{{ route('admin.create') }}" class="btn btn-primary mb-2">Create a recipe</Link>
+                <Link :href="route('admin.create')" class="btn btn-primary mb-2">Create a recipe</Link>
 
                 <table class="table">
                     <thead>

@@ -35,6 +35,6 @@ Route::get('/dashboard', function () {
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/admin', [RecipeController::class, 'index']);
+Route::resource('admin', RecipeController::class);
 
 require __DIR__.'/auth.php';
