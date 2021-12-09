@@ -31,11 +31,4 @@ class HomeController extends Controller
         return view('recipe.show', compact('recipe'));
     }
 
-    public function order()
-    {
-        $recipes = Recipe::latest()->where('persons', '<=', 0)->paginate(5);
-
-        return view('recipes.order', compact('recipes'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
-    }
 }
