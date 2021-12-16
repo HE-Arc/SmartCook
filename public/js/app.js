@@ -22703,6 +22703,7 @@ __webpack_require__.r(__webpack_exports__);
     Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head,
     Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Link,
     InputLabel: _Components_Form_InputLabel_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    ListIngredients: ListIngredients,
     BreezeValidationErrors: _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
@@ -23930,6 +23931,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_InputLabel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InputLabel");
 
+  var _component_ListIngredients = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ListIngredients");
+
   var _component_breeze_validation_errors = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("breeze-validation-errors");
 
   var _component_breeze_authenticated_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("breeze-authenticated-layout");
@@ -23964,13 +23967,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         formError: $data.form.errors.name
       }, null, 8
       /* PROPS */
-      , ["modelValue", "formError"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputLabel, {
+      , ["modelValue", "formError"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ListIngredients, {
         modelValue: $data.form.ingredients,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
           return $data.form.ingredients = $event;
         }),
-        inputId: 'inputPages',
-        labelText: 'ingredients',
         formError: $data.form.errors.ingredients
       }, null, 8
       /* PROPS */
@@ -24934,7 +24935,7 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   scope: "col"
 }, "Description"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col"
-}, "Instrutions"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+}, "Instructions"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col"
 }, "Cook time"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col"

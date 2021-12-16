@@ -25,10 +25,8 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="form-group col-6">
-                                        <InputLabel
+                                        <ListIngredients
                                             v-model="form.ingredients"
-                                            :inputId="'inputPages'"
-                                            :labelText="'ingredients'"
                                             :formError="form.errors.ingredients"
                                         />
                                     </div>
@@ -99,6 +97,7 @@ export default {
         Head,
         Link,
         InputLabel,
+        ListIngredients,
         BreezeValidationErrors,
     },
     data() {

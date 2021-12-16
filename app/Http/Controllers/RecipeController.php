@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ingredient;
 use Illuminate\Http\Request;
 use App\Models\Recipe;
 
@@ -10,6 +11,7 @@ class RecipeController extends Controller
     public function index()
     {
         $recipes = Recipe::all();
+        $this->test();
         return inertia('Admin/Admin', compact('recipes'));
     }
 
@@ -40,6 +42,22 @@ class RecipeController extends Controller
         Recipe::create($request->all());
 
         return redirect()->route('admin.index')->with('success', 'Recipe created successfully');
+    }
+
+    public function test()
+    {
+        $ingredients = Ingredient::find(1);
+        $this->alert($ingredients);
+
+        foreach ($ingredients->recipes as $recipe) {
+            //echo "<script type='text/javascript'>alert('$message');</script>";
+            $this->alert($recipe->pivot);
+        }
+    }
+
+    public function alert($message)
+    {
+        echo "<script type='text/javascript'>alert('$message');</script>";
     }
 
 }
