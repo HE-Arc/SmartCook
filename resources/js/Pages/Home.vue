@@ -25,7 +25,7 @@
                                 <th scope="col">Ingredients</th>
                                 <th scope="col">Persons</th>
                                 <th scope="col">Description</th>
-                                <th scope="col">Instrutions</th>
+                                <th scope="col">Instructions</th>
                                 <th scope="col">Cook time</th>
                                 <th scope="col">Category</th>
                                 <th scope="col">Show</th>
