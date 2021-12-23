@@ -20,6 +20,7 @@
                         <th scope="col">Category</th>
                         <th scope="col">Show</th>
                         <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
                     </tr>
                     </thead>
 
@@ -33,10 +34,19 @@
                         <td>{{recipe.cook_time ?? "cook_time manquante..."}}</td>
                         <td>{{recipe.category ?? "category manquante..."}}</td>
                         <td>
-                            <Link class="btn btn-info"><i class="bi bi-arrow-right-circle"></i></Link>
+                            <Link href="route('admin.show', recipe.id)" class="btn btn-info"><i class="bi bi-arrow-right-circle"> {{recipe.id}} </i></Link>
                         </td>
+                        <!--
+                        :href="route('admin.show', recipe.id)"
+                        href="route('admin.show',recipe.id)"
+                        -->
+
                         <td>
-                            <Link class="btn btn-info"><i class="bi bi-arrow-right-circle"></i></Link>
+                            <Link href="route('admin.edit', recipe.id)" class="btn btn-primary"><i class="bi bi-arrow-right-circle"></i></Link>
+                        </td>
+
+                        <td>
+                            <button @click="destroy(recipe.id)" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                         </td>
                     </tr>
                     </tbody>
@@ -62,10 +72,12 @@ export default {
   },
   props: [
       'recipes'
-  ]
+  ],
+
+  methods: {
+      destroy(id) {
+          Inertia.delete(route['recipes.destroy', id]);
+      }
+  }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

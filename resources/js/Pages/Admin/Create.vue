@@ -1,11 +1,11 @@
 <template>
     <Head title="Create a new recipe" />
 
-    <breeze-authenticated-layout>
+    <!--<breeze-authenticated-layout>-->
 
     <h2 class="h4 font-weight-bold">
-            Create a new recipe
-        </h2>
+        Create a new recipe
+    </h2>
 
         <Link :href="route('admin.index')" class="btn btn-primary mb-2">Go back</Link>
 
@@ -82,13 +82,14 @@
                 </div>
             </div>
         </form>
-    </breeze-authenticated-layout>
+    <!--</breeze-authenticated-layout>-->
 </template>
 
 <script>
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import { Head, useForm, Link } from '@inertiajs/inertia-vue3'
 import InputLabel from '@/Components/Form/InputLabel.vue'
+import ListIngredients from '@/Components/Form/ListIngredients.vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 
 export default {

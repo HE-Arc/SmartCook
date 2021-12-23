@@ -22,7 +22,15 @@ class RecipeController extends Controller
 
     public function show(Recipe $recipe)
     {
+        $this->alert("SHOW");
         return inertia('Admin/Show', compact('recipe'));
+    }
+
+    public function edit($id)
+    {
+        $this->alert("EDIT");
+        $recipe = Recipe::where('id', $id)->firstOrFail();
+        return view('Admin/Edit', ['recipe' => $recipe]);
     }
 
     public function store(Request $request)
@@ -47,11 +55,11 @@ class RecipeController extends Controller
     public function test()
     {
         $ingredients = Ingredient::find(1);
-        $this->alert($ingredients);
+        //$this->alert($ingredients);
 
         foreach ($ingredients->recipes as $recipe) {
             //echo "<script type='text/javascript'>alert('$message');</script>";
-            $this->alert($recipe->pivot);
+            //$this->alert($recipe->pivot);
         }
     }
 
