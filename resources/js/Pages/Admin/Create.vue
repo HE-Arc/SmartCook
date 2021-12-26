@@ -25,11 +25,23 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="form-group col-6">
-                                        <ListIngredients
+                                        <span>Ingrédients</span>
+                                        <br>
+                                        <template v-for="ingredient in ingredients" :key="ingredient.name" style="margin:5px;">
+                                            <input type="checkbox"
                                             v-model="form.ingredients"
+                                            :inputId="'ingredients'"
                                             :formError="form.errors.ingredients"
-                                        />
+                                            :id="ingredient.name"
+                                            :value="ingredient.name"
+                                            style="margin-left: 10px;margin-right: 2px;">
+                                            <label :for="ingredient.name"> {{ ingredient.name }} </label>
+                                        </template>
+                                        <hr>
+                                        <span>Sélectionné : {{ form.ingredients }} </span>
+
                                     </div>
+
                                     <div class="form-group col-6">
                                         <InputLabel
                                             v-model="form.persons"
@@ -47,12 +59,21 @@
                                         />
                                     </div>
                                     <div class="form-group col-6">
+                                        <!--
                                         <InputLabel
                                             v-model="form.instruction"
                                             :inputId="'instruction'"
                                             :labelText="'Instructions'"
                                             :formError="form.errors.instruction"
                                         />
+                                        -->
+                                        <span>Instructions</span>
+                                        <br>
+                                        <textarea v-model="form.instruction"
+                                            :inputId="'instruction'"
+                                            :labelText="'Instructions'"
+                                            :formError="form.errors.instruction"
+                                            placeholder="ajoutez les instructions sur plusieurs lignes"></textarea>
                                     </div>
                                     <div class="form-group col-6">
                                         <InputLabel
@@ -101,16 +122,22 @@ export default {
         ListIngredients,
         BreezeValidationErrors,
     },
+
+
+    props: [
+        'ingredients'
+    ],
+
     data() {
         return {
             form: useForm({
                 name: null,
-                ingredients: null,
+                ingredients: [],
                 persons: null,
                 description: null,
                 instruction: null,
                 cook_time: null,
-                category: null
+                category: null,
             })
         }
     },

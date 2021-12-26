@@ -27,14 +27,14 @@
                     <tbody>
                     <tr v-for="recipe in recipes" :key="recipe.id">
                         <td>{{recipe.name ?? "name manquante..."}}</td>
-                        <td>{{recipe.ingredients ?? "Ingredients manquante..."}}</td>
+                        <td>{{takeIngredients(ingredients, recipe) ?? "Ingredients manquants..."}}</td>
                         <td>{{recipe.persons ?? "persons manquante..."}}</td>
                         <td>{{recipe.description ?? "Description manquante..."}}</td>
                         <td>{{recipe.instruction ?? "instruction manquante..."}}</td>
                         <td>{{recipe.cook_time ?? "cook_time manquante..."}}</td>
                         <td>{{recipe.category ?? "category manquante..."}}</td>
                         <td>
-                            <Link href="route('admin.show', recipe.id)" class="btn btn-info"><i class="bi bi-arrow-right-circle"> {{recipe.id}} </i></Link>
+                            <Link href="route('admin.show',recipe.id)" class="btn btn-info"><i class="bi bi-arrow-right-circle"> {{recipe.id}} </i></Link>
                         </td>
                         <!--
                         :href="route('admin.show', recipe.id)"
@@ -42,12 +42,13 @@
                         -->
 
                         <td>
-                            <Link href="route('admin.edit', recipe.id)" class="btn btn-primary"><i class="bi bi-arrow-right-circle"></i></Link>
+                            <Link href="route('admin.edit',recipe.id)" class="btn btn-primary"><i class="bi bi-arrow-right-circle"></i></Link>
                         </td>
 
                         <td>
                             <button @click="destroy(recipe.id)" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                         </td>
+
                     </tr>
                     </tbody>
 
@@ -71,12 +72,26 @@ export default {
     Link
   },
   props: [
-      'recipes'
+      'recipes',
+      'ingredients',
   ],
 
   methods: {
       destroy(id) {
-          Inertia.delete(route['recipes.destroy', id]);
+            Inertia.delete(route['recipes.destroy', id]);
+      },
+
+      takeIngredients(ingredients, recipe) {
+            var tab = [];
+
+            ingredients.forEach(ingredient => {
+                //console.log(ingredient);
+                tab.push(ingredient.name);
+            })
+            //console.log(recipe.id);
+            //console.log(tab);
+
+            return tab;
       }
   }
 }

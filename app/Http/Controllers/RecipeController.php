@@ -11,13 +11,15 @@ class RecipeController extends Controller
     public function index()
     {
         $recipes = Recipe::all();
-        $this->test();
-        return inertia('Admin/Admin', compact('recipes'));
+        $ingredients = Ingredient::all();
+
+        return inertia('Admin/Admin', compact(('recipes'), ('ingredients')));
     }
 
     public function create()
     {
-        return inertia('Admin/Create');
+        $ingredients = Ingredient::all();
+        return inertia('Admin/Create', compact('ingredients'));
     }
 
     public function show(Recipe $recipe)
@@ -52,20 +54,29 @@ class RecipeController extends Controller
         return redirect()->route('admin.index')->with('success', 'Recipe created successfully');
     }
 
-    public function test()
-    {
-        $ingredients = Ingredient::find(1);
-        //$this->alert($ingredients);
 
-        foreach ($ingredients->recipes as $recipe) {
-            //echo "<script type='text/javascript'>alert('$message');</script>";
-            //$this->alert($recipe->pivot);
-        }
-    }
 
     public function alert($message)
     {
         echo "<script type='text/javascript'>alert('$message');</script>";
+    }
+
+
+    public function getIngredientsFromIdRecipe($id_recipe) {
+        $rec = Recipe::find($id_recipe);
+
+        foreach ($rec->ingredients as $recipe) {
+            $this->alert($recipe->pivot);
+        }
+    }
+
+    public function getRecipesFromIdIngredient($id_ingredient)
+    {
+        $ingredients = Ingredient::find($id_ingredient);
+
+        foreach ($ingredients->recipes as $recipe) {
+            $this->alert($recipe->pivot);
+        }
     }
 
 }

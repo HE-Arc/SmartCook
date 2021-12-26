@@ -22696,10 +22696,20 @@ __webpack_require__.r(__webpack_exports__);
     Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head,
     Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Link
   },
-  props: ['recipes'],
+  props: ['recipes', 'ingredients'],
   methods: {
     destroy: function destroy(id) {
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia["delete"](route[('recipes.destroy', id)]);
+    },
+    takeIngredients: function takeIngredients(ingredients, recipe) {
+      var tab = [];
+      ingredients.forEach(function (ingredient) {
+        //console.log(ingredient);
+        tab.push(ingredient.name);
+      }); //console.log(recipe.id);
+      //console.log(tab);
+
+      return tab;
     }
   }
 });
@@ -22736,11 +22746,12 @@ __webpack_require__.r(__webpack_exports__);
     ListIngredients: _Components_Form_ListIngredients_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
     BreezeValidationErrors: _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
+  props: ['ingredients'],
   data: function data() {
     return {
       form: (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.useForm)({
         name: null,
-        ingredients: null,
+        ingredients: [],
         persons: null,
         description: null,
         instruction: null,
@@ -23937,13 +23948,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8
   /* PROPS */
   , ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.recipes, function (recipe) {
-    var _recipe$name, _recipe$ingredients, _recipe$persons, _recipe$description, _recipe$instruction, _recipe$cook_time, _recipe$category;
+    var _recipe$name, _$options$takeIngredi, _recipe$persons, _recipe$description, _recipe$instruction, _recipe$cook_time, _recipe$category;
 
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
       key: recipe.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_recipe$name = recipe.name) !== null && _recipe$name !== void 0 ? _recipe$name : "name manquante..."), 1
     /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_recipe$ingredients = recipe.ingredients) !== null && _recipe$ingredients !== void 0 ? _recipe$ingredients : "Ingredients manquante..."), 1
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$options$takeIngredi = $options.takeIngredients($props.ingredients, recipe)) !== null && _$options$takeIngredi !== void 0 ? _$options$takeIngredi : "Ingredients manquants..."), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_recipe$persons = recipe.persons) !== null && _recipe$persons !== void 0 ? _recipe$persons : "persons manquante..."), 1
     /* TEXT */
@@ -23956,7 +23967,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_recipe$category = recipe.category) !== null && _recipe$category !== void 0 ? _recipe$category : "category manquante..."), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
-      href: "route('admin.show', recipe.id)",
+      href: "route('admin.show',recipe.id)",
       "class": "btn btn-info"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -23970,7 +23981,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, 1024
     /* DYNAMIC_SLOTS */
     )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n                        :href=\"route('admin.show', recipe.id)\"\n                        href=\"route('admin.show',recipe.id)\"\n                        "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
-      href: "route('admin.edit', recipe.id)",
+      href: "route('admin.edit',recipe.id)",
       "class": "btn btn-primary"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -24040,30 +24051,54 @@ var _hoisted_9 = {
 var _hoisted_10 = {
   "class": "form-group col-6"
 };
-var _hoisted_11 = {
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Ingrédients", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_13 = ["formError", "id", "value"];
+var _hoisted_14 = ["for"];
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_16 = {
   "class": "form-group col-6"
 };
-var _hoisted_12 = {
+var _hoisted_17 = {
   "class": "form-group col-6"
 };
-var _hoisted_13 = {
+var _hoisted_18 = {
   "class": "form-group col-6"
 };
-var _hoisted_14 = {
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Instructions", -1
+/* HOISTED */
+);
+
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_21 = ["formError"];
+var _hoisted_22 = {
   "class": "form-group col-6"
 };
-var _hoisted_15 = {
+var _hoisted_23 = {
   "class": "form-group col-6"
 };
-var _hoisted_16 = ["disabled"];
+var _hoisted_24 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
 
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
   var _component_InputLabel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InputLabel");
-
-  var _component_ListIngredients = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ListIngredients");
 
   var _component_breeze_validation_errors = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("breeze-validation-errors");
 
@@ -24095,15 +24130,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     formError: $data.form.errors.name
   }, null, 8
   /* PROPS */
-  , ["modelValue", "formError"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ListIngredients, {
-    modelValue: $data.form.ingredients,
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return $data.form.ingredients = $event;
-    }),
-    formError: $data.form.errors.ingredients
-  }, null, 8
-  /* PROPS */
-  , ["modelValue", "formError"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputLabel, {
+  , ["modelValue", "formError"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, _hoisted_12, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.ingredients, function (ingredient) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      key: ingredient.name
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      type: "checkbox",
+      "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+        return $data.form.ingredients = $event;
+      }),
+      inputId: 'ingredients',
+      formError: $data.form.errors.ingredients,
+      id: ingredient.name,
+      value: ingredient.name,
+      style: {
+        "margin-left": "10px",
+        "margin-right": "2px"
+      }
+    }, null, 8
+    /* PROPS */
+    , _hoisted_13), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.ingredients]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+      "for": ingredient.name
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(ingredient.name), 9
+    /* TEXT, PROPS */
+    , _hoisted_14)], 64
+    /* STABLE_FRAGMENT */
+    );
+  }), 128
+  /* KEYED_FRAGMENT */
+  )), _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Sélectionné : " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.ingredients), 1
+  /* TEXT */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputLabel, {
     modelValue: $data.form.persons,
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.form.persons = $event;
@@ -24113,7 +24169,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     formError: $data.form.errors.persons
   }, null, 8
   /* PROPS */
-  , ["modelValue", "formError"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputLabel, {
+  , ["modelValue", "formError"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputLabel, {
     modelValue: $data.form.description,
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $data.form.description = $event;
@@ -24123,17 +24179,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     formError: $data.form.errors.description
   }, null, 8
   /* PROPS */
-  , ["modelValue", "formError"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputLabel, {
-    modelValue: $data.form.instruction,
+  , ["modelValue", "formError"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n                                        <InputLabel\n                                            v-model=\"form.instruction\"\n                                            :inputId=\"'instruction'\"\n                                            :labelText=\"'Instructions'\"\n                                            :formError=\"form.errors.instruction\"\n                                        />\n                                        "), _hoisted_19, _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
     "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $data.form.instruction = $event;
     }),
     inputId: 'instruction',
     labelText: 'Instructions',
-    formError: $data.form.errors.instruction
+    formError: $data.form.errors.instruction,
+    placeholder: "ajoutez les instructions sur plusieurs lignes"
   }, null, 8
   /* PROPS */
-  , ["modelValue", "formError"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputLabel, {
+  , _hoisted_21), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.instruction]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputLabel, {
     modelValue: $data.form.cook_time,
     "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
       return $data.form.cook_time = $event;
@@ -24143,7 +24199,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     formError: $data.form.errors.cook_time
   }, null, 8
   /* PROPS */
-  , ["modelValue", "formError"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputLabel, {
+  , ["modelValue", "formError"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputLabel, {
     modelValue: $data.form.category,
     "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
       return $data.form.category = $event;
@@ -24161,7 +24217,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     disabled: $data.form.processing
   }, "Submit", 8
   /* PROPS */
-  , _hoisted_16)])])])])])], 32
+  , _hoisted_24)])])])])])], 32
   /* HYDRATE_EVENTS */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("</breeze-authenticated-layout>")], 64
   /* STABLE_FRAGMENT */
