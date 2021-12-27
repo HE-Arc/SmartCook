@@ -110,7 +110,6 @@
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import { Head, useForm, Link } from '@inertiajs/inertia-vue3'
 import InputLabel from '@/Components/Form/InputLabel.vue'
-import ListIngredients from '@/Components/Form/ListIngredients.vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 
 export default {
@@ -119,7 +118,6 @@ export default {
         Head,
         Link,
         InputLabel,
-        ListIngredients,
         BreezeValidationErrors,
     },
 

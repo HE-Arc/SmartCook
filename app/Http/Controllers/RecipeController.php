@@ -10,10 +10,24 @@ class RecipeController extends Controller
 {
     public function index()
     {
-        $recipes = Recipe::all();
-        $ingredients = Ingredient::all();
+        //$recipes = Recipe::all();
 
-        return inertia('Admin/Admin', compact(('recipes'), ('ingredients')));
+        $recipes = Recipe::with('ingredients')->get();
+        //dd($recipes);
+
+        // $recipes = Recipe::get();
+        // $ingredients = Ingredient::all();
+        // var_dump($recipes);
+        //pivot_recipe_id
+
+        /*foreach ($recipes as $recipe) {
+            dd($recipe->ingredients);
+        }*/
+
+        //dd($recipes->ingredients);
+
+        //return inertia('Admin/Admin', compact(('recipes'), ('ingredients')));
+        return inertia('Admin/Admin', compact('recipes'));
     }
 
     public function create()

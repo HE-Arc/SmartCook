@@ -1,4 +1,4 @@
-<template>
+ <template>
     <div>
         <Head title="Admin" />
 
@@ -7,6 +7,7 @@
             <div class="page-content">
 
                 <Link :href="route('admin.create')" class="btn btn-primary mb-2">Create a recipe</Link>
+
 
                 <table class="table">
                     <thead>
@@ -27,7 +28,9 @@
                     <tbody>
                     <tr v-for="recipe in recipes" :key="recipe.id">
                         <td>{{recipe.name ?? "name manquante..."}}</td>
-                        <td>{{takeIngredients(ingredients, recipe) ?? "Ingredients manquants..."}}</td>
+                        <td>
+                            <span v-for="ingr in recipe.ingredients" :key="ingr.id">- {{ ingr.name }} <br> </span>
+                        </td>
                         <td>{{recipe.persons ?? "persons manquante..."}}</td>
                         <td>{{recipe.description ?? "Description manquante..."}}</td>
                         <td>{{recipe.instruction ?? "instruction manquante..."}}</td>
@@ -48,6 +51,7 @@
                         <td>
                             <button @click="destroy(recipe.id)" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                         </td>
+
 
                     </tr>
                     </tbody>
@@ -81,17 +85,8 @@ export default {
             Inertia.delete(route['recipes.destroy', id]);
       },
 
-      takeIngredients(ingredients, recipe) {
-            var tab = [];
-
-            ingredients.forEach(ingredient => {
-                //console.log(ingredient);
-                tab.push(ingredient.name);
-            })
-            //console.log(recipe.id);
-            //console.log(tab);
-
-            return tab;
+      console_log(truc) {
+          console.table(truc);
       }
   }
 }
