@@ -34,7 +34,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/autocomplete-search', [HomeController::class, 'autocompleteSearch']);
 
 Route::resource('admin', RecipeController::class);
+
 
 require __DIR__.'/auth.php';

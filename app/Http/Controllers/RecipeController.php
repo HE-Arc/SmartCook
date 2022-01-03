@@ -15,6 +15,11 @@ class RecipeController extends Controller
         return inertia('Admin/Admin', compact('recipes'));
     }
 
+    public function search(Request $request)
+    {
+
+    }
+
     public function create()
     {
         return inertia('Admin/Create');
