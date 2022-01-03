@@ -1,76 +1,59 @@
 <template>
+
     <Head title="Show a recipe" />
 
-    <breeze-authenticated-layout>
+    <div v-for="re in recipe" :key="re.id" style="margin:3em; ">
+        <Link :href="route('admin.index')" class="btn btn-primary mb-2">Go back</Link>
 
-    <h2 class="h4 font-weight-bold">
-        Show a recipe
-    </h2>
+        <h1 style="text-align:center;">{{ re.name }}</h1>
+        <br>
+        <br>
 
-    <Link :href="route('admin.index')" class="btn btn-primary mb-2">Go back</Link>
-
-    <div class="row">
-        <div class="col-12 col-lg-6 offset-0 offset-lg-3">
-            <div class="card">
-                <div class="card-header">
-                    Afficher un livre
-                </div>
-                <div class="card-body">
-                    <div class="form-row">
-                        <div class="form-group col-12">
-                            <strong>Nom :</strong>
-                            {{ $recipe.name }}
-                        </div>
-                        <div class="row mt-3">
-                            <div class="form-group col-6">
-                                <strong>Ingrédients :</strong>
-                                {{ $recipe.ingredients }}
-                            </div>
-                            <div class="form-group col-6">
-                                <strong>Nombre de personnes :</strong>
-                                {{ $recipe.persons }}
-                            </div>
-                            <div class="form-group col-6">
-                                <strong>Description :</strong>
-                                {{ $recipe.description }}
-                            </div>
-                            <div class="form-group col-6">
-                                <strong>Instruction :</strong>
-                                {{ $recipe.instruction }}
-                            </div>
-                            <div class="form-group col-6">
-                                <strong>Temps de préparation :</strong>
-                                {{ $recipe.cook_time }}
-                            </div>
-                            <div class="form-group col-6">
-                                <strong>Catégorie :</strong>
-                                {{ $recipe.category }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div style="float:right; width:60%;">
+            <h4>Number of persons : {{ re.persons }}</h4>
+            <h4>Cook time : {{ re.cook_time }}</h4>
+            <h4>Description : {{ re.description }} </h4>
         </div>
-    </div>
 
-</breeze-authenticated-layout>
+        <div style="float:left; width:40%;">
+            <table class="table" style="width:50%; text-align:center; margin: auto;">
+                <thead>
+                    <tr>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Ingredient</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr v-for="ingr in re.ingredients" :key="ingr.id">
+                        <td>{{ ingr.pivot.quantity }}</td>
+                        <td>{{ ingr.name }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 10em;">
+            <br>
+            <h4>Instructions : </h4>
+            <p>{{ re.instruction }}</p>
+        </div>
+
+
+    </div>
 
 </template>
 
 <script>
-import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
-import { Head, useForm, Link } from '@inertiajs/inertia-vue3'
-import InputLabel from '@/Components/Form/InputLabel.vue'
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
+import { Head, Link } from '@inertiajs/inertia-vue3'
 
 export default {
     components: {
-    BreezeAuthenticatedLayout,
-    Head,
-    Link
-  },
-  props: [
-      'recipe'
-  ]
+        Head,
+        Link
+    },
+    props: [
+        'recipe'
+    ]
 }
 </script>

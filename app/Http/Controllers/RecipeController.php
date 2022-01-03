@@ -10,23 +10,7 @@ class RecipeController extends Controller
 {
     public function index()
     {
-        //$recipes = Recipe::all();
-
         $recipes = Recipe::with('ingredients')->get();
-        //dd($recipes);
-
-        // $recipes = Recipe::get();
-        // $ingredients = Ingredient::all();
-        // var_dump($recipes);
-        //pivot_recipe_id
-
-        /*foreach ($recipes as $recipe) {
-            dd($recipe->ingredients);
-        }*/
-
-        //dd($recipes->ingredients);
-
-        //return inertia('Admin/Admin', compact(('recipes'), ('ingredients')));
         return inertia('Admin/Admin', compact('recipes'));
     }
 
@@ -36,9 +20,16 @@ class RecipeController extends Controller
         return inertia('Admin/Create', compact('ingredients'));
     }
 
-    public function show(Recipe $recipe)
+    public function show($id)
     {
-        $this->alert("SHOW");
+        ////$this->alert("SHOW");
+        $recipe = Recipe::where('id', $id)->with('ingredients')->get();
+        //$recipe = Recipe::where('id', $id)->firstOrFail();
+
+        /////$this->alert($recipe);
+        //dd($recipe);
+        //return inertia('Admin/Show', compact('recipe'));
+        //$ingredients = Ingredient::all();
         return inertia('Admin/Show', compact('recipe'));
     }
 
@@ -46,7 +37,7 @@ class RecipeController extends Controller
     {
         $this->alert("EDIT");
         $recipe = Recipe::where('id', $id)->firstOrFail();
-        return view('Admin/Edit', ['recipe' => $recipe]);
+        return inertia('Admin/Edit', ['recipe' => $recipe]);
     }
 
     public function store(Request $request)
@@ -66,6 +57,15 @@ class RecipeController extends Controller
         Recipe::create($request->all());
 
         return redirect()->route('admin.index')->with('success', 'Recipe created successfully');
+    }
+
+    public function destroy($id)
+    {
+        $this->alert("DESTROY");
+        $recipe = Recipe::find($id);
+        $recipe->delete();
+
+        return redirect()->route('admin.index')->with('success', 'Recipe deleted successfully');
     }
 
 

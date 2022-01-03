@@ -37,7 +37,7 @@
                         <td>{{recipe.cook_time ?? "cook_time manquante..."}}</td>
                         <td>{{recipe.category ?? "category manquante..."}}</td>
                         <td>
-                            <Link href="route('admin.show',recipe.id)" class="btn btn-info"><i class="bi bi-arrow-right-circle"> {{recipe.id}} </i></Link>
+                            <Link :href="route('admin.show', recipe.id)" class="btn btn-info"><i class="bi bi-arrow-right-circle"></i></Link>
                         </td>
                         <!--
                         :href="route('admin.show', recipe.id)"
@@ -45,7 +45,7 @@
                         -->
 
                         <td>
-                            <Link href="route('admin.edit',recipe.id)" class="btn btn-primary"><i class="bi bi-arrow-right-circle"></i></Link>
+                            <Link class="btn btn-primary" href="route('admin.edit', recipe.id)"><i class="bi bi-pencil"></i></Link>
                         </td>
 
                         <td>
@@ -82,7 +82,9 @@ export default {
 
   methods: {
       destroy(id) {
-            Inertia.delete(route['recipes.destroy', id]);
+            console.table("method destroy avant " + id);
+            Inertia.delete(route['admin.destroy', id]);
+            console.table("method destroy après");
       },
 
       console_log(truc) {
