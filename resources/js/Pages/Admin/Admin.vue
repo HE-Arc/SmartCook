@@ -45,7 +45,7 @@
                         -->
 
                         <td>
-                            <Link class="btn btn-primary" href="route('admin.edit', recipe.id)"><i class="bi bi-pencil"></i></Link>
+                            <Link :href="route('admin.edit', recipe.id)" class="btn btn-primary" ><i class="bi bi-pencil"></i></Link>
                         </td>
 
                         <td>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Ingredient;
 use Illuminate\Http\Request;
 use App\Models\Recipe;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class RecipeController extends Controller
 {
@@ -22,22 +24,15 @@ class RecipeController extends Controller
 
     public function show($id)
     {
-        ////$this->alert("SHOW");
         $recipe = Recipe::where('id', $id)->with('ingredients')->get();
-        //$recipe = Recipe::where('id', $id)->firstOrFail();
-
-        /////$this->alert($recipe);
-        //dd($recipe);
-        //return inertia('Admin/Show', compact('recipe'));
-        //$ingredients = Ingredient::all();
         return inertia('Admin/Show', compact('recipe'));
     }
 
     public function edit($id)
     {
         $this->alert("EDIT");
-        $recipe = Recipe::where('id', $id)->firstOrFail();
-        return inertia('Admin/Edit', ['recipe' => $recipe]);
+        $recipe = Recipe::where('id', $id)->with('ingredients')->get();
+        return inertia('Admin/Edit', compact('recipe'));
     }
 
     public function store(Request $request)
@@ -54,9 +49,39 @@ class RecipeController extends Controller
             ]
         );
 
-        Recipe::create($request->all());
+        $find_recipe = Recipe::where([
+                ['name', '=', $request->name],
+                ['persons', '=', $request->persons],
+                ['description', '=', $request->description],
+                ['instruction', '=', $request->instruction],
+                ['cook_time', '=', $request->cook_time],
+                ['category', '=', $request->category]
+        ])->first();
 
-        return redirect()->route('admin.index')->with('success', 'Recipe created successfully');
+        $diff_ingr[0] = 152;
+
+        if($find_recipe != null)
+        {
+            $arr = [];
+            foreach ($find_recipe->ingredients as $ingredient) {
+                array_push($arr, $ingredient->id);
+            }
+            $diff_ingr = array_diff($request->ingredients,  $arr);
+        }
+
+        if(($find_recipe == null) && (count($diff_ingr) != 0))
+        {
+            $recipe = Recipe::create($request->all());
+
+            foreach ($request->ingredients as $ingredient) {
+                DB::table('ingredient_recipe')->insert([
+                    ['ingredient_id' => $ingredient, 'recipe_id' => $recipe->id, 'quantity' => 4444444]
+                ]);
+            }
+            return redirect()->route('admin.index')->with('success', 'Recipe created successfully');
+        } else {
+            return back()->withErrors(['message'=>'This recipe already exists. Please change it or go back ! :-)']);
+        }
     }
 
     public function destroy($id)
@@ -67,6 +92,31 @@ class RecipeController extends Controller
 
         return redirect()->route('admin.index')->with('success', 'Recipe deleted successfully');
     }
+
+    public function update(Request $request, Recipe $recipe)
+    {
+        $request->validate(
+            [
+            'name' => 'required',
+            'ingredients' => 'required',
+            'persons' => 'required',
+            'description' => 'required',
+            'instruction' => 'required',
+            'cook_time' => 'required',
+            'category' => 'required'
+            ]
+        );
+
+        $recipe->update($request->all());
+
+        foreach ($request->ingredients as $ingredient) {
+            $recipe->ingredients()->updateExistingPivot($ingredient, $recipe->id);
+        }
+
+        return redirect()->route('admin.index')
+            ->with('success','Recipe updated successfully');
+    }
+
 
 
 

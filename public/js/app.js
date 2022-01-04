@@ -23903,16 +23903,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, 1032
     /* PROPS, DYNAMIC_SLOTS */
     , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n                        :href=\"route('admin.show', recipe.id)\"\n                        href=\"route('admin.show',recipe.id)\"\n                        "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
-      "class": "btn btn-primary",
-      href: "route('admin.edit', recipe.id)"
+      href: _ctx.route('admin.edit', recipe.id),
+      "class": "btn btn-primary"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
         return [_hoisted_7];
       }),
-      _: 1
-      /* STABLE */
+      _: 2
+      /* DYNAMIC */
 
-    })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    }, 1032
+    /* PROPS, DYNAMIC_SLOTS */
+    , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
         return $options.destroy(recipe.id);
       },
@@ -24062,8 +24064,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }),
       inputId: 'ingredients',
       formError: $data.form.errors.ingredients,
-      id: ingredient.name,
-      value: ingredient.name,
+      id: ingredient.id,
+      value: ingredient.id,
       style: {
         "margin-left": "10px",
         "margin-right": "2px"
@@ -24071,7 +24073,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, null, 8
     /* PROPS */
     , _hoisted_13), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.form.ingredients]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-      "for": ingredient.name
+      "for": ingredient.id
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(ingredient.name), 9
     /* TEXT, PROPS */
     , _hoisted_14)], 64

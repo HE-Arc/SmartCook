@@ -32,10 +32,10 @@
                                             v-model="form.ingredients"
                                             :inputId="'ingredients'"
                                             :formError="form.errors.ingredients"
-                                            :id="ingredient.name"
-                                            :value="ingredient.name"
+                                            :id="ingredient.id"
+                                            :value="ingredient.id"
                                             style="margin-left: 10px;margin-right: 2px;">
-                                            <label :for="ingredient.name"> {{ ingredient.name }} </label>
+                                            <label :for="ingredient.id"> {{ ingredient.name }} </label>
                                         </template>
                                         <hr>
                                         <span>Sélectionné : {{ form.ingredients }} </span>
