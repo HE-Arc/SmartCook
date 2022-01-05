@@ -16,9 +16,11 @@
                 </form>
 
                 <div class="result-search">
+
                     <h3>Result of the research:</h3>
 
                     <table class="table">
+
                         <thead>
                             <tr>
                                 <th scope="col">Name</th>
@@ -31,11 +33,14 @@
                                 <th scope="col">Show</th>
                             </tr>
                         </thead>
+
                         <tbody>
                             <tr v-for="recipe in recipes" :key="recipe.id">
+
                                 <td>{{recipe.name ?? "name manquante..."}}</td>
-                                <td>{{recipe.ingredients ?? "Ingredients manquante..."}}</td>
-                                <td>{{recipe.persons ?? "persons manquante..."}}</td>
+                        <td>
+                            <span v-for="ingr in recipe.ingredients" :key="ingr.id">- {{ ingr.name }} <br> </span>
+                        </td>                                <td>{{recipe.persons ?? "persons manquante..."}}</td>
                                 <td>{{recipe.description ?? "Description manquante..."}}</td>
                                 <td>{{recipe.instruction ?? "instruction manquante..."}}</td>
                                 <td>{{recipe.cook_time ?? "cook_time manquante..."}}</td>
@@ -43,40 +48,15 @@
                                 <td>
                                     <Link class="btn btn-info"><i class="bi bi-arrow-right-circle"></i></Link>
                                 </td>
+
                             </tr>
                         </tbody>
 
-
                     </table>
 
-                    <div>
-                            <div class="mx-auto pull-right">
-                                <div class="">
-                                    <form action="{{ route('home.index') }}" method="GET" role="search">
-
-                                        <div class="input-group">
-                                            <span class="input-group-btn mr-5 mt-1">
-                                                <button class="btn btn-info" type="submit" title="Search projects">
-                                                    <span class="fas fa-search"></span>
-                                                </button>
-                                            </span>
-                                            <input type="text" class="form-control mr-2" name="term" placeholder="Search projects" id="term">
-                                            <a href="{{ route('projects.index') }}" class=" mt-1">
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-danger" type="button" title="Refresh page">
-                                                        <span class="fas fa-sync-alt"></span>
-                                                    </button>
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
                 </div>
+
             </div>
-
-
         </div>
     </div>
 </template>
@@ -95,7 +75,8 @@ export default {
 
   props: [
       'recipes'
-  ]
+  ],
+
 }
 </script>
 
