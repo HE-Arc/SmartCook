@@ -3,9 +3,9 @@
         <div class="container">
 
             <div class="navbar-header">
-                <img :src="getImage()" alt="Smartcook" height="200"/>
+                <img :src="getImage()" alt="Smartcook" height="200" href="#"/>
 
-                <a class="navbar-brand" href="#">Smartcook</a>
+                <a class="navbar-brand" href="#"></a>
             </div>
 
                 <!-- Left Side Of Navbar -->
