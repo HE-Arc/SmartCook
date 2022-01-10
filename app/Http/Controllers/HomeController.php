@@ -17,7 +17,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::all();
+        $recipes = Recipe::with('ingredients')->get();
         return inertia('Home', compact('recipes'));
     }
 
@@ -30,9 +30,21 @@ class HomeController extends Controller
      */
     public function search(Request $request)
     {
-        $recipes = Recipe::when($request->term, function($query, $term) {
-            $query->where('name', 'LIKE', '%' . $term . '%');
-        })->get();
+        $recipes = Recipe::with('ingredients')->get();
+
+        // temporary array to store the recipe that contains the wanted ingredient.
+        $arr = [];
+
+        foreach ($recipes as $recipe) {
+            foreach ($recipe->ingredients as $ingredient) {
+                if(str_contains($ingredient->name, $request->term)) {
+                    array_push($arr, $recipe);
+                }
+            }
+        }
+
+        // assignation of the temporary array to the actual recipes to show.
+        $recipes = $arr;
 
         return inertia('Home', compact('recipes'));
     }

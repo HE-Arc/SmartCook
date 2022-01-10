@@ -33,8 +33,8 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('recipes', [HomeController::class, 'search'])->name('recipes.index');
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/search', [HomeController::class, 'search'])->name('search.index');
 
 Route::resource('/admin/recipes', RecipeController::class);
 

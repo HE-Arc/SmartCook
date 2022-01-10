@@ -11,16 +11,13 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><router-link @click="home" style="font-size: xxx-large;">Smart Cook</router-link></li>
+                    <li style="font-size: x-large;">Admin</li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
 
-                     <Link @click="admin" class="btn btn-primary" style="margin: 10px;">Admin</Link>
-
-                     <Link @click="login" class="btn btn-primary" style="margin: 10px;">Login</Link>
-
-                     <Link @click="register" class="btn btn-primary" style="margin: 10px;">Register</Link>
+                    <Link @click="home" class="btn btn-primary">Home</Link>
 
                     <li class="dropdown" v-if="authorized">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -35,9 +32,7 @@
                             </li>
                         </ul>
                     </li>
-
                 </ul>
-
         </div>
     </nav>
 </template>
@@ -54,19 +49,15 @@ export default {
   },
 
   methods: {
+
     getImage() {
-    return 'assets/images/logo.PNG';
+    return '../assets/images/logo.PNG';
     },
-    admin() {
-        Inertia.get(route('recipes.index'))
-    },
-    login() {
-        Inertia.get(route('login'))
-    },
-    register() {
-        Inertia.get(route('register'))
+
+    home() {
+        Inertia.get(route('home.index'));
     }
+
   }
 }
 </script>
-

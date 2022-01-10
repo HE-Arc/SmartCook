@@ -98,7 +98,7 @@ export default {
 
     methods: {
         search: _.throttle(function() {
-            Inertia.get(route('recipes.index', {term: this.term}))
+            Inertia.get(route('search.index', {term: this.term}))
         }, 50)
     }
 

@@ -7,10 +7,11 @@
  -->
 
  <template>
+        <div>
     <div>
         <Head title="Admin" />
 
-        <div>
+        <TopAdmin/>
 
             <div class="page-content">
 
@@ -71,27 +72,30 @@
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import { Head, Link } from '@inertiajs/inertia-vue3'
 import { Inertia } from '@inertiajs/inertia'
+import TopAdmin from '@/Pages/Admin/TopAdmin.vue'
 
 export default {
   components: {
     BreezeAuthenticatedLayout,
     Head,
-    Link
+    Link,
+    TopAdmin
   },
+
   props: [
       'recipes',
       'ingredients',
   ],
 
   methods: {
-      destroy(id) {
-            console.table("method destroy avant " + id);
-            Inertia.delete(route('recipes.destroy', id));
-      },
+    destroy(id) {
+        console.table("method destroy avant " + id);
+        Inertia.delete(route('recipes.destroy', id));
+    },
 
-      console_log(truc) {
-          console.table(truc);
-      }
+    console_log(truc) {
+        console.table(truc);
+    }
   }
 }
 </script>
