@@ -1,16 +1,16 @@
 <template>
-    <nav class="navbar navbar-default navbar-fixed-top" id="navBar">
+    <nav class="navbar navbar-default navbar-fixed-top" id="navBar" style="background-color: #feedd2">
         <div class="container">
 
             <div class="navbar-header">
-                <img :src="getImage()" alt="Smartcook" height="200"/>
-
-                <a class="navbar-brand" href="#">Smartcook</a>
+                <a href="#" class="navbar-brand">
+                    <img :src="getImage()" alt="Smartcook" height="200"/>
+                </a>
             </div>
 
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><router-link :to="{ name: 'recipes'}">Recipes</router-link></li>
+                    <li><router-link :to="{ name: 'recipes' }" style="font-size: xxx-large;">Smart Cook</router-link></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -18,6 +18,8 @@
 
                     <li v-if="!authorized"><router-link :to="{ name: 'login'}">Login</router-link></li>
                     <li v-if="!authorized"><router-link :to="{ name: 'register'}">Register</router-link></li>
+
+                    <li><router-link :to="{ name: '/admin/recipes' }">Admin</router-link></li>
 
                     <li class="dropdown" v-if="authorized">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -33,6 +35,9 @@
                         </ul>
                     </li>
                 </ul>
+
+
+
         </div>
     </nav>
 </template>
@@ -46,6 +51,7 @@ export default {
     BreezeAuthenticatedLayout,
     Head,
   },
+
   methods: {
       getImage() {
         return 'assets/images/logo.PNG';

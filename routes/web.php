@@ -34,6 +34,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('recipes', [HomeController::class, 'search'])->name('recipes.index');
 
 Route::resource('/admin/recipes', RecipeController::class);
 

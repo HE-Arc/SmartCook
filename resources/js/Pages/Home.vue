@@ -9,16 +9,24 @@
                 <h1>Welcome!</h1>
                 <h2>Let's search some recipes with specifics ingredients</h2>
 
-                <form autocomplete="off" action="#">
-                    <div class="autocomplete" style="width:300px;">
-                        <input id="search-ingredients" type="text" name="ingredients" placeholder="Ingredients">
-                    </div>
-                </form>
+                <div class="p-4">
+                    <label for="search">Search :</label>
+
+                    <input id="search"
+                    autocomplete="on"
+                    placeholder="Ingredients"
+                    type="text"
+                    v-model="term"
+                    @keyup="search">
+
+                </div>
 
                 <div class="result-search">
+
                     <h3>Result of the research:</h3>
 
                     <table class="table">
+
                         <thead>
                             <tr>
                                 <th scope="col">Name</th>
@@ -31,10 +39,15 @@
                                 <th scope="col">Show</th>
                             </tr>
                         </thead>
+
                         <tbody>
+
                             <tr v-for="recipe in recipes" :key="recipe.id">
+
                                 <td>{{recipe.name ?? "name manquante..."}}</td>
-                                <td>{{recipe.ingredients ?? "Ingredients manquante..."}}</td>
+                                <td>
+                                    <span v-for="ingredient in recipe.ingredients" :key="ingredient.id">- {{ ingredient.name }} <br> </span>
+                                </td>
                                 <td>{{recipe.persons ?? "persons manquante..."}}</td>
                                 <td>{{recipe.description ?? "Description manquante..."}}</td>
                                 <td>{{recipe.instruction ?? "instruction manquante..."}}</td>
@@ -43,13 +56,16 @@
                                 <td>
                                     <Link class="btn btn-info"><i class="bi bi-arrow-right-circle"></i></Link>
                                 </td>
+
                             </tr>
+
                         </tbody>
+
                     </table>
+
                 </div>
+
             </div>
-
-
         </div>
     </div>
 </template>
@@ -58,17 +74,34 @@
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import { Head } from '@inertiajs/inertia-vue3'
 import NavigationBar from '@/Pages/Top.vue'
+import Label from '@/Components/Label.vue'
+import { Inertia } from '@inertiajs/inertia'
+import _ from 'lodash';
 
 export default {
-  components: {
+    components: {
     BreezeAuthenticatedLayout,
     Head,
-    NavigationBar
-  },
+    NavigationBar,
+    Label
+    },
 
-  props: [
-      'recipes'
-  ]
+    data() {
+        return {
+            term: ''
+        }
+    },
+
+    props: [
+        'recipes'
+    ],
+
+    methods: {
+        search: _.throttle(function() {
+            Inertia.get(route('recipes.index', {term: this.term}))
+        }, 50)
+    }
+
 }
 </script>
 

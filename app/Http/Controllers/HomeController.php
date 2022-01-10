@@ -5,30 +5,36 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Recipe;
 use Inertia\Inertia;
+use phpDocumentor\Reflection\Types\Null_;
+use SebastianBergmann\Environment\Console;
 
 class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function index()
     {
         $recipes = Recipe::all();
-
         return inertia('Home', compact('recipes'));
     }
 
     /**
-     * Display the specified resource.
+     * Search the specified ingredient input
+     * in search bar of the Home.vue page.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  Request $request
+     * @return \Inertia\Response
      */
-    public function show(Recipe $recipe)
+    public function search(Request $request)
     {
-        return view('recipe.show', compact('recipe'));
+        $recipes = Recipe::when($request->term, function($query, $term) {
+            $query->where('name', 'LIKE', '%' . $term . '%');
+        })->get();
+
+        return inertia('Home', compact('recipes'));
     }
 
 }
