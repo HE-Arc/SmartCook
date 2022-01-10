@@ -1,3 +1,11 @@
+ <!--
+/**
+ * Authors : Meier Simon and Margueron Yasmine
+ *
+ * Date : 10.01.2022
+ */
+ -->
+
  <template>
     <div>
         <Head title="Admin" />

@@ -1,4 +1,12 @@
-<template>
+<!--
+/**
+ * Authors : Meier Simon and Margueron Yasmine
+ *
+ * Date : 10.01.2022
+ */
+ -->
+
+ <template>
     <Head title="Edit a recipe" />
 
     <!--<breeze-authenticated-layout>-->

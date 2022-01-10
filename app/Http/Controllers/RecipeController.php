@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Authors : Meier Simon and Margueron Yasmine
  *
- * Date : 10 January 2022
+ * Date : 10.01.2022
  */
+
 namespace App\Http\Controllers;
 
 use App\Models\Ingredient;
