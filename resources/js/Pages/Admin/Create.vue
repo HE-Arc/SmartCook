@@ -59,14 +59,6 @@
                                         />
                                     </div>
                                     <div class="form-group col-6">
-                                        <!--
-                                        <InputLabel
-                                            v-model="form.instruction"
-                                            :inputId="'instruction'"
-                                            :labelText="'Instructions'"
-                                            :formError="form.errors.instruction"
-                                        />
-                                        -->
                                         <span>Instructions</span>
                                         <br>
                                         <textarea v-model="form.instruction"

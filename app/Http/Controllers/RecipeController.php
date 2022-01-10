@@ -1,33 +1,51 @@
 <?php
-
+/**
+ * Authors : Meier Simon and Margueron Yasmine
+ *
+ * Date : 10 January 2022
+ */
 namespace App\Http\Controllers;
 
 use App\Models\Ingredient;
 use Illuminate\Http\Request;
 use App\Models\Recipe;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 
+/***
+ *  Controller for the administrator part and revenue management.
+ */
 class RecipeController extends Controller
 {
+    /**
+     * Main function for displaying recipes.
+     */
     public function index()
     {
         $recipes = Recipe::with('ingredients')->get();
         return inertia('Admin/Admin', compact('recipes'));
     }
 
+    /**
+     * Function for creating a recipe.
+     */
     public function create()
     {
         $ingredients = Ingredient::all();
         return inertia('Admin/Create', compact('ingredients'));
     }
 
+    /**
+     * Function to display a specific recipe.
+     */
     public function show($id)
     {
         $recipe = Recipe::where('id', $id)->with('ingredients')->get();
         return inertia('Admin/Show', compact('recipe'));
     }
 
+    /**
+     * Function to edit a specific recipe.
+     */
     public function edit($id)
     {
         $recipe = Recipe::where('id', $id)->with('ingredients')->get();
@@ -35,6 +53,11 @@ class RecipeController extends Controller
         return inertia('Admin/Edit', compact('recipe', 'ingredients'));
     }
 
+    /**
+     * Function to save a new recipe using the form.
+     * Check that this recipe does not already exist.
+     * Add the ingredients select from the pivot table.
+     */
     public function store(Request $request)
     {
         $request->validate(
@@ -84,6 +107,10 @@ class RecipeController extends Controller
         }
     }
 
+    /**
+     * Function to delete a recipe.
+     * Will also remove existing links in the pivot table.
+     */
     public function destroy($id)
     {
         $recipe = Recipe::find($id);
@@ -91,6 +118,9 @@ class RecipeController extends Controller
         return redirect()->route('recipes.index')->with('success', 'Recipe deleted successfully');
     }
 
+    /**
+     * Function to update a recipe.
+     */
     public function update(Request $request, Recipe $recipe)
     {
         $request->validate(
@@ -107,17 +137,15 @@ class RecipeController extends Controller
 
         $recipe->update($request->all());
 
+        DB::table('ingredient_recipe')->where('recipe_id', $recipe->id)->delete();
+
         foreach ($request->ingredients as $ingredient) {
-            $recipe->ingredients()->updateExistingPivot($ingredient, $recipe->id);
+            DB::table('ingredient_recipe')->insert([
+                ['ingredient_id' => $ingredient, 'recipe_id' => $recipe->id, 'quantity' => 4444444]
+            ]);
         }
 
         return redirect()->route('recipes.index')
             ->with('success','Recipe updated successfully');
     }
-
-    public function alert($message)
-    {
-        echo "<script type='text/javascript'>alert('$message');</script>";
-    }
-
 }
