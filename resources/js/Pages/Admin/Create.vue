@@ -7,9 +7,9 @@
         Create a new recipe
     </h2>
 
-        <Link :href="route('admin.index')" class="btn btn-primary mb-2">Go back</Link>
+        <Link :href="route('recipes.index')" class="btn btn-primary mb-2">Go back</Link>
 
-        <form @submit.prevent="form.post(route('admin.store'))">
+        <form @submit.prevent="form.post(route('recipes.store'))">
             <div class="row">
                 <div class="col-12 col-lg-6 offset-0 offset-lg-3">
                     <div class="card">

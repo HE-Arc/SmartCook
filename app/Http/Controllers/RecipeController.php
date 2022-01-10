@@ -30,9 +30,9 @@ class RecipeController extends Controller
 
     public function edit($id)
     {
-        $this->alert("EDIT");
         $recipe = Recipe::where('id', $id)->with('ingredients')->get();
-        return inertia('Admin/Edit', compact('recipe'));
+        $ingredients = Ingredient::all();
+        return inertia('Admin/Edit', compact('recipe', 'ingredients'));
     }
 
     public function store(Request $request)
@@ -78,7 +78,7 @@ class RecipeController extends Controller
                     ['ingredient_id' => $ingredient, 'recipe_id' => $recipe->id, 'quantity' => 4444444]
                 ]);
             }
-            return redirect()->route('admin.index')->with('success', 'Recipe created successfully');
+            return redirect()->route('recipes.index')->with('success', 'Recipe created successfully');
         } else {
             return back()->withErrors(['message'=>'This recipe already exists. Please change it or go back ! :-)']);
         }
@@ -86,11 +86,9 @@ class RecipeController extends Controller
 
     public function destroy($id)
     {
-        $this->alert("DESTROY");
         $recipe = Recipe::find($id);
         $recipe->delete();
-
-        return redirect()->route('admin.index')->with('success', 'Recipe deleted successfully');
+        return redirect()->route('recipes.index')->with('success', 'Recipe deleted successfully');
     }
 
     public function update(Request $request, Recipe $recipe)
@@ -113,34 +111,13 @@ class RecipeController extends Controller
             $recipe->ingredients()->updateExistingPivot($ingredient, $recipe->id);
         }
 
-        return redirect()->route('admin.index')
+        return redirect()->route('recipes.index')
             ->with('success','Recipe updated successfully');
     }
-
-
-
 
     public function alert($message)
     {
         echo "<script type='text/javascript'>alert('$message');</script>";
-    }
-
-
-    public function getIngredientsFromIdRecipe($id_recipe) {
-        $rec = Recipe::find($id_recipe);
-
-        foreach ($rec->ingredients as $recipe) {
-            $this->alert($recipe->pivot);
-        }
-    }
-
-    public function getRecipesFromIdIngredient($id_ingredient)
-    {
-        $ingredients = Ingredient::find($id_ingredient);
-
-        foreach ($ingredients->recipes as $recipe) {
-            $this->alert($recipe->pivot);
-        }
     }
 
 }

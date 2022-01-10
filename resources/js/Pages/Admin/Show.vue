@@ -3,7 +3,7 @@
     <Head title="Show a recipe" />
 
     <div v-for="re in recipe" :key="re.id" style="margin:3em; ">
-        <Link :href="route('admin.index')" class="btn btn-primary mb-2">Go back</Link>
+        <Link :href="route('recipes.index')" class="btn btn-primary mb-2">Go back</Link>
 
         <h1 style="text-align:center;">{{ re.name }}</h1>
         <br>

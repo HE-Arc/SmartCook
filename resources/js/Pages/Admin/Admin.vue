@@ -6,8 +6,7 @@
 
             <div class="page-content">
 
-                <Link :href="route('admin.create')" class="btn btn-primary mb-2">Create a recipe</Link>
-
+                <Link :href="route('recipes.create')" class="btn btn-primary mb-2">Create a recipe</Link>
 
                 <table class="table">
                     <thead>
@@ -37,15 +36,11 @@
                         <td>{{recipe.cook_time ?? "cook_time manquante..."}}</td>
                         <td>{{recipe.category ?? "category manquante..."}}</td>
                         <td>
-                            <Link :href="route('admin.show', recipe.id)" class="btn btn-info"><i class="bi bi-arrow-right-circle"></i></Link>
+                            <Link :href="route('recipes.show', recipe.id)" class="btn btn-info"><i class="bi bi-arrow-right-circle"></i></Link>
                         </td>
-                        <!--
-                        :href="route('admin.show', recipe.id)"
-                        href="route('admin.show',recipe.id)"
-                        -->
 
                         <td>
-                            <Link :href="route('admin.edit', recipe.id)" class="btn btn-primary" ><i class="bi bi-pencil"></i></Link>
+                            <Link :href="route('recipes.edit', recipe.id)" class="btn btn-primary" ><i class="bi bi-pencil"></i></Link>
                         </td>
 
                         <td>
@@ -83,8 +78,7 @@ export default {
   methods: {
       destroy(id) {
             console.table("method destroy avant " + id);
-            Inertia.delete(route['admin.destroy', id]);
-            console.table("method destroy après");
+            Inertia.delete(route('recipes.destroy', id));
       },
 
       console_log(truc) {

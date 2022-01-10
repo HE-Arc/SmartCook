@@ -16,10 +16,14 @@ class IngredientSeeder extends Seeder
     public function run()
     {
         $ingredients = [
-            ['name' => 'Pomme', 'category' => 'Fruit', 'measure' => 'piece'],
-            ['name' => 'Chou', 'category' => 'Légume', 'measure' => 'piece'],
-            ['name' => 'Sucre', 'category' => 'Sucre', 'measure' => 'piece'],
-            ['name' => 'Farine', 'category' => 'Céréale', 'measure' => 'piece']
+            ['name' => 'Pomme', 'category' => 'Fruit', 'measure' => 'pièce'],
+            ['name' => 'Chou', 'category' => 'Légume', 'measure' => 'pièce'],
+            ['name' => 'Sucre', 'category' => 'Sucre', 'measure' => 'pièce'],
+            ['name' => 'Farine', 'category' => 'Céréale', 'measure' => 'pièce'],
+            ['name' => 'Carotte', 'category' => 'Légume', 'measure' => 'pièce'],
+            ['name' => 'Pomme de terre', 'category' => 'Légume', 'measure' => 'pièce'],
+            ['name' => 'Oeuf', 'category' => 'Oeuf', 'measure' => 'pièce'],
+            ['name' => 'Courgette', 'category' => 'Légume', 'measure' => 'pièce']
         ];
 
         foreach ($ingredients as $ingredient)
