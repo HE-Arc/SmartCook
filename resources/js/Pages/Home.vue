@@ -11,7 +11,14 @@
 
                 <div class="p-4">
                     <label for="search">Search :</label>
-                    <input id="search" autocomplete="on" placeholder="Ingredients" type="text" v-model="term" @keyup="search">
+
+                    <input id="search"
+                    autocomplete="on"
+                    placeholder="Ingredients"
+                    type="text"
+                    v-model="term"
+                    @keyup="search">
+
                 </div>
 
                 <div class="result-search">
@@ -39,7 +46,7 @@
 
                                 <td>{{recipe.name ?? "name manquante..."}}</td>
                                 <td>
-                                    <span v-for="ingredient in recipe.ingredients" :key="ingredient.id">- {{ ingredient.name }} {{ ingredient.id }} <br> </span>
+                                    <span v-for="ingredient in recipe.ingredients" :key="ingredient.id">- {{ ingredient.name }} <br> </span>
                                 </td>
                                 <td>{{recipe.persons ?? "persons manquante..."}}</td>
                                 <td>{{recipe.description ?? "Description manquante..."}}</td>
