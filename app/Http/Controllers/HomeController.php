@@ -55,4 +55,13 @@ class HomeController extends Controller
         return inertia('Home', compact('recipes'));
     }
 
+    /**
+     * Function to display a specific recipe.
+     */
+    public function show(Request $request)
+    {
+        $recipe = Recipe::where('id', $request->id)->with('ingredients')->get();
+        return inertia('Show', compact('recipe'));
+    }
+
 }

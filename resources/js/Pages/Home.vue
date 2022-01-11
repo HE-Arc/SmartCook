@@ -44,7 +44,7 @@
 
                             <tr v-for="recipe in recipes" :key="recipe.id">
 
-                                <td>{{recipe.name ?? "name manquante..."}}</td>
+                                <td>{{ recipe.name ?? "name manquante..." }}</td>
                                 <td>
                                     <span v-for="ingredient in recipe.ingredients" :key="ingredient.id">- {{ ingredient.name }} <br> </span>
                                 </td>
@@ -54,7 +54,7 @@
                                 <td>{{recipe.cook_time ?? "cook_time manquante..."}}</td>
                                 <td>{{recipe.category ?? "category manquante..."}}</td>
                                 <td>
-                                    <Link class="btn btn-info"><i class="bi bi-arrow-right-circle"></i></Link>
+                                    <Link v-model="id" v-on:click="show" class="btn btn-info">Show<i class="bi bi-arrow-right-circle"></i></Link>
                                 </td>
 
                             </tr>
@@ -88,7 +88,8 @@ export default {
 
     data() {
         return {
-            term: ''
+            term: '',
+            id: 2
         }
     },
 
@@ -97,9 +98,15 @@ export default {
     ],
 
     methods: {
+
         search() {
             Inertia.get(route('search.index', {term: this.term}))
+        },
+
+        show() {
+            Inertia.get(route('home.show', {id: this.id}))
         }
+
     }
 
 }

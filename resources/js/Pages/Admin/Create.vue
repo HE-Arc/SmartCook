@@ -9,7 +9,7 @@
 <template>
     <Head title="Create a new recipe" />
 
-        <TopAdmin/>
+    <TopAdmin/>
 
     <h2 class="h4 font-weight-bold">
         Create a new recipe
