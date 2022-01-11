@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+/**
+ * Authors : Meier Simon and Margueron Yasmine
+ *
+ * Date : 10.01.2022
+ */
+
 use Illuminate\Http\Request;
 use App\Models\Recipe;
 use Inertia\Inertia;

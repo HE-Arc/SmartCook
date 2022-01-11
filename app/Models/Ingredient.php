@@ -2,6 +2,12 @@
 
 namespace App\Models;
 
+/**
+ * Authors : Meier Simon and Margueron Yasmine
+ *
+ * Date : 10.01.2022
+ */
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Recipe;

@@ -22679,11 +22679,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['recipes', 'ingredients'],
   methods: {
     destroy: function destroy(id) {
-      console.table("method destroy avant " + id);
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia["delete"](route('recipes.destroy', id));
-    },
-    console_log: function console_log(truc) {
-      console.table(truc);
     }
   }
 });
@@ -22705,6 +22701,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
 /* harmony import */ var _Components_Form_InputLabel_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/Form/InputLabel.vue */ "./resources/js/Components/Form/InputLabel.vue");
 /* harmony import */ var _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Components/ValidationErrors.vue */ "./resources/js/Components/ValidationErrors.vue");
+/* harmony import */ var _Pages_Admin_TopAdmin_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Pages/Admin/TopAdmin.vue */ "./resources/js/Pages/Admin/TopAdmin.vue");
+
 
 
 
@@ -22715,7 +22713,8 @@ __webpack_require__.r(__webpack_exports__);
     Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head,
     Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Link,
     InputLabel: _Components_Form_InputLabel_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    BreezeValidationErrors: _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    BreezeValidationErrors: _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    TopAdmin: _Pages_Admin_TopAdmin_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   props: ['ingredients'],
   data: function data() {
@@ -22750,6 +22749,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
 /* harmony import */ var _Components_Form_InputLabel_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/Form/InputLabel.vue */ "./resources/js/Components/Form/InputLabel.vue");
 /* harmony import */ var _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Components/ValidationErrors.vue */ "./resources/js/Components/ValidationErrors.vue");
+/* harmony import */ var _Pages_Admin_TopAdmin_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Pages/Admin/TopAdmin.vue */ "./resources/js/Pages/Admin/TopAdmin.vue");
+
 
 
 
@@ -22760,7 +22761,8 @@ __webpack_require__.r(__webpack_exports__);
     Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head,
     Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Link,
     InputLabel: _Components_Form_InputLabel_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    BreezeValidationErrors: _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    BreezeValidationErrors: _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    TopAdmin: _Pages_Admin_TopAdmin_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   props: ['recipe', 'ingredients'],
   methods: {
@@ -22797,11 +22799,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+/* harmony import */ var _Pages_Admin_TopAdmin_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/Admin/TopAdmin.vue */ "./resources/js/Pages/Admin/TopAdmin.vue");
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.Head,
-    Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.Link
+    Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.Link,
+    TopAdmin: _Pages_Admin_TopAdmin_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   props: ['recipe']
 });
@@ -22832,7 +22837,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getImage: function getImage() {
-      return '../assets/images/logo.PNG';
+      return '../../assets/images/logo.PNG';
     },
     home: function home() {
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.get(route('home.index'));
@@ -24146,6 +24151,8 @@ var _hoisted_24 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
 
+  var _component_TopAdmin = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TopAdmin");
+
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
   var _component_InputLabel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InputLabel");
@@ -24154,7 +24161,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
     title: "Create a new recipe"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("<breeze-authenticated-layout>"), _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TopAdmin), _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: _ctx.route('recipes.index'),
     "class": "btn btn-primary mb-2"
   }, {
@@ -24442,6 +24449,8 @@ var _hoisted_40 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
 
+  var _component_TopAdmin = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TopAdmin");
+
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
   var _component_InputLabel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InputLabel");
@@ -24450,7 +24459,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
     title: "Edit a recipe"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("<breeze-authenticated-layout>"), _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("<breeze-authenticated-layout>"), _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TopAdmin), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: _ctx.route('recipes.index'),
     "class": "btn btn-primary mb-2"
   }, {
@@ -24466,7 +24475,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onSubmit: _cache[7] || (_cache[7] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
       return $data.form.put(_ctx.route('recipes.update', $props.recipe[0]));
     }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("<label for=\"name\">Name : </label><br>\r\n                                    <input type=\"text\" id=\"name\" name=\"name\" v-bind:value=recipe[0].name><br><br>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputLabel, {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("<label for=\"name\">Name : </label><br>\n                                    <input type=\"text\" id=\"name\" name=\"name\" v-bind:value=recipe[0].name><br><br>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InputLabel, {
     modelValue: $data.form.name,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $data.form.name = $event;
@@ -24673,11 +24682,13 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
 
+  var _component_TopAdmin = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TopAdmin");
+
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
     title: "Show a recipe"
-  }), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.recipe, function (re) {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TopAdmin), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.recipe, function (re) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: re.id,
       style: {

@@ -9,6 +9,8 @@
  <template>
     <Head title="Show a recipe" />
 
+        <TopAdmin/>
+
     <div v-for="re in recipe" :key="re.id" style="margin:3em; ">
         <Link :href="route('recipes.index')" class="btn btn-primary mb-2">Go back</Link>
 
@@ -53,11 +55,13 @@
 
 <script>
 import { Head, Link } from '@inertiajs/inertia-vue3'
+import TopAdmin from '@/Pages/Admin/TopAdmin.vue'
 
 export default {
     components: {
         Head,
-        Link
+        Link,
+        TopAdmin
     },
     props: [
         'recipe'

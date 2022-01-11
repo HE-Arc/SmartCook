@@ -15,6 +15,8 @@
         Edit a recipe
     </h2>
 
+        <TopAdmin/>
+
         <Link :href="route('recipes.index')" class="btn btn-primary mb-2">Go back</Link>
 
         <form @submit.prevent="form.put(route('recipes.update', recipe[0]))">
@@ -128,6 +130,7 @@ import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import { Head, useForm, Link } from '@inertiajs/inertia-vue3'
 import InputLabel from '@/Components/Form/InputLabel.vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
+import TopAdmin from '@/Pages/Admin/TopAdmin.vue'
 
 export default {
     components: {
@@ -136,6 +139,7 @@ export default {
         Link,
         InputLabel,
         BreezeValidationErrors,
+        TopAdmin
     },
 
 

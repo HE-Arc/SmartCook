@@ -51,7 +51,7 @@ export default {
   methods: {
 
     getImage() {
-    return '../assets/images/logo.PNG';
+    return '../../assets/images/logo.PNG';
     },
 
     home() {

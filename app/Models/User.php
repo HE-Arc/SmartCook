@@ -2,6 +2,12 @@
 
 namespace App\Models;
 
+/**
+ * Authors : Meier Simon and Margueron Yasmine
+ *
+ * Date : 10.01.2022
+ */
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;

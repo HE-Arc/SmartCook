@@ -83,7 +83,7 @@ class RecipeController extends Controller
                 ['category', '=', $request->category]
         ])->first();
 
-        $diff_ingr[0] = 152;
+        $diff_ingr[0] = 152; // initializing array with a value to avoid null exception.
 
         if($find_recipe != null)
         {
@@ -100,7 +100,8 @@ class RecipeController extends Controller
 
             foreach ($request->ingredients as $ingredient) {
                 DB::table('ingredient_recipe')->insert([
-                    ['ingredient_id' => $ingredient, 'recipe_id' => $recipe->id, 'quantity' => 4444444]
+                    ['ingredient_id' => $ingredient, 'recipe_id' => $recipe->id, 'quantity' => 4]
+                    // 4 is a hard coded value for quantity because of lack of time;
                 ]);
             }
             return redirect()->route('recipes.index')->with('success', 'Recipe created successfully');

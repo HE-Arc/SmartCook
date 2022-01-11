@@ -7,7 +7,7 @@
  -->
 
  <template>
-        <div>
+<div>
     <div>
         <Head title="Admin" />
 
@@ -89,13 +89,9 @@ export default {
 
   methods: {
     destroy(id) {
-        console.table("method destroy avant " + id);
         Inertia.delete(route('recipes.destroy', id));
     },
 
-    console_log(truc) {
-        console.table(truc);
-    }
   }
 }
 </script>
