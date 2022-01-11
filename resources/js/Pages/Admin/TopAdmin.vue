@@ -3,15 +3,12 @@
         <div class="container">
 
             <div class="navbar-header">
-                <a href="#" class="navbar-brand">
-                    <img :src="getImage()" alt="Smartcook" height="200"/>
-                </a>
+                <a href="/"><img v-bind:src="getImage()" alt="Smartcook" height="200"/></a>
             </div>
 
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><router-link @click="home" style="font-size: xxx-large;">Smart Cook</router-link></li>
-                    <li style="font-size: x-large;">Admin</li>
+                    <li><a @click="home" style="font-size: xxx-large;">Smart Cook</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -19,7 +16,7 @@
 
                     <Link @click="home" class="btn btn-primary">Home</Link>
 
-                    <li class="dropdown" v-if="authorized">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ email }} <span class="caret"></span>
                         </a>
@@ -51,7 +48,7 @@ export default {
   methods: {
 
     getImage() {
-    return '../../assets/images/logo.PNG';
+        return '../../../assets/images/logo.PNG';
     },
 
     home() {

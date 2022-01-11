@@ -9,13 +9,12 @@
  <template>
     <Head title="Edit a recipe" />
 
-    <!--<breeze-authenticated-layout>-->
+    <TopAdmin/>
 
     <h2 class="h4 font-weight-bold">
         Edit a recipe
     </h2>
 
-        <TopAdmin/>
 
         <Link :href="route('recipes.index')" class="btn btn-primary mb-2">Go back</Link>
 

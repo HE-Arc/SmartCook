@@ -3,14 +3,12 @@
         <div class="container">
 
             <div class="navbar-header">
-                <a href="#" class="navbar-brand">
-                    <img :src="getImage()" alt="Smartcook" height="200"/>
-                </a>
+                <a href="/"><img v-bind:src="getImage()" alt="Smartcook" height="200"/></a>
             </div>
 
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><router-link @click="home" style="font-size: xxx-large;">Smart Cook</router-link></li>
+                    <li><a @click="home" style="font-size: xxx-large;">Smart Cook</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -18,19 +16,22 @@
 
                      <Link @click="admin" class="btn btn-primary" style="margin: 10px;">Admin</Link>
 
-                     <Link @click="login" class="btn btn-primary" style="margin: 10px;">Login</Link>
+                    <!-- Not used -->
+                     <Link @click="login" class="btn btn-primary" style="margin: 10px;">Login [not used]</Link>
 
-                     <Link @click="register" class="btn btn-primary" style="margin: 10px;">Register</Link>
+                    <!-- Not used -->
+                     <Link @click="register" class="btn btn-primary" style="margin: 10px;">Register [not used]</Link>
 
-                    <li class="dropdown" v-if="authorized">
+                    <!-- Not used -->
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ email }} <span class="caret"></span>
+                            {{ email }} <span class="caret">[not used]</span>
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                 <a href="" @click.prevent="logout()">
-                                    Logout
+                                    Logout [not used]
                                 </a>
                             </li>
                         </ul>
@@ -54,18 +55,27 @@ export default {
   },
 
   methods: {
+
     getImage() {
-    return 'assets/images/logo.PNG';
+        return 'assets/images/logo.PNG';
     },
+
+    home() {
+        Inertia.get(route('home.index'))
+    },
+
     admin() {
         Inertia.get(route('recipes.index'))
     },
+
     login() {
         Inertia.get(route('login'))
     },
+
     register() {
         Inertia.get(route('register'))
     }
+
   }
 }
 </script>

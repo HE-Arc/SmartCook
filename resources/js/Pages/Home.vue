@@ -17,7 +17,7 @@
                     placeholder="Ingredients"
                     type="text"
                     v-model="term"
-                    @keyup="search">
+                    v-on:keyup.enter="search">
 
                 </div>
 
@@ -97,9 +97,9 @@ export default {
     ],
 
     methods: {
-        search: _.throttle(function() {
+        search() {
             Inertia.get(route('search.index', {term: this.term}))
-        }, 50)
+        }
     }
 
 }
